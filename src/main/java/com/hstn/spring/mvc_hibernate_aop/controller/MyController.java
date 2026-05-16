@@ -38,10 +38,16 @@ public class MyController {
         return "redirect:/";
     }
 
-    @RequestMapping("updateInfo")
+    @RequestMapping("/updateInfo")
     public String updateEmployee(@RequestParam("empId") int empId, Model model) {
         Employee employee = employeeService.getEmployee(empId);
         model.addAttribute("employee", employee);
         return "employee-info";
+    }
+
+    @RequestMapping("/deleteEmployee")
+    public String deleteEmployee(@RequestParam("empId") int empId) {
+        employeeService.deleteEmployee(empId);
+        return "redirect:/";
     }
 }
