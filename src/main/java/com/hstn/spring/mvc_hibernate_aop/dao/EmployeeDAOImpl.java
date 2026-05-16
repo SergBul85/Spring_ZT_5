@@ -22,4 +22,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         List<Employee> employees = session.createQuery("from Employee", Employee.class).getResultList();
         return employees;
     }
+
+    @Override
+    public void saveEmployees(Employee employee) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(employee);
+    }
 }
